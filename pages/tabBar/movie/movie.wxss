@@ -79,6 +79,6 @@
 }
 
 .data {
-    font-size: 24rpx;
+    font-size: 22rpx;
     color: #999;
 }
