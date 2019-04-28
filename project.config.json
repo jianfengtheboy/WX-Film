@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -13,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.6",
-	"appid": "wx122a34e6c4088fa4",
+	"appid": "wx19f46974b1c034ab",
 	"projectname": "WX-Film",
 	"debugOptions": {
 		"hidedInDevtools": []
