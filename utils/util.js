@@ -65,7 +65,7 @@ const throttle = (func, interval=250)=> {
     if (curTime - startTime <= interval) {
       //小于规定时间间隔时，用setTimeout在指定时间后再执行
       timeout = setTimeout(() => {
-        func.call(this,event)
+        func.call(this, event)
       }, interval)
     } else {
       //重新计时并执行函数
