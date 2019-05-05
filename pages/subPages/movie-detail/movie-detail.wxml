@@ -36,7 +36,7 @@
     <view class="movie-body">
         <view class="section">
             <view class="section-title">剧情简介</view>
-            <view class="synopsis" style="height:{{isFold ? '84rpx' : 'auto'}}">{{detailMovie.dra}}</view>
+            <view class="synopsis" style="height:{{isFold ? '83rpx' : 'auto'}}">{{detailMovie.dra}}</view>
             <view class="iconfont icon-jiantouarrow483 {{isFold ? '' : 'unfold'}}" bindtap="toggleFold"></view>
         </view>
         <view class="section">
