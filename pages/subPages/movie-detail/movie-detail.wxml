@@ -1,2 +1,86 @@
 <!--pages/subPages/movie-detail/movie-detail.wxml-->
-<text>pages/subPages/movie-detail/movie-detail.wxml</text>
+<import src="../../../templates/commentSection/commentSection.wxml" />
+
+<view wx:if="{{detailMovie}}">
+    <view class="movie-header">
+        <view class="movie-background" style="background-image:url({{detailMovie.img}})"></view>
+        <view class="movie-mask"></view>
+        <view class="movie-content">
+            <view class="movie-poster" style="background-image:url({{detailMovie.img}})"></view>
+            <view class="movie-info">
+                <view class="movie-name line-ellipsis">{{detailMovie.nm}}</view>
+                <view class="movie-ename line-ellipsis">{{detailMovie.enm}}</view>
+                <view wx:if="{{detailMovie.globalReleased}}">
+                    <view wx:if="{{detailMovie.sc}}">
+                        <view class="movie-score line-ellipsis">
+                            <image src="/assets/images/{{item}}.png" class="movie-star" wx:for="{{detailMovie.stars}}" wx:key="{{index}}" />
+                            {{detailMovie.sc}}
+                        </view>
+                        <view class="score-num line-ellipsis">({{detailMovie.snum}}万人评分)</view>
+                    </view>
+                    <view wx:else class="no-score">暂无评分</view>
+                </view>
+                <view wx:else class="movie-score">{{detailMovie.wish}}人想看</view>
+                <view class="movie-category line-ellipsis">
+                    <view>{{detailMovie.cat}}</view>
+                    <view class="tag-box" wx:if="{{detailMovie.version}}">
+                        <text class="tag-d">{{detailMovie.version[0]}}</text>
+                        <text class="tab-imax" wx:if="{{detailMovie.version[1]}}">{{detailMovie.version[1]}}</text>
+                    </view>
+                </view>
+                <view class="movie-time line-ellipsis">{{detailMovie.src}} / {{detailMovie.dur}}分钟</view>
+                <view class="movie-time line-ellipsis">{{detailMovie.pubDesc}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="movie-body">
+        <view class="section">
+            <view class="section-title">剧情简介</view>
+            <view class="synopsis" style="height:{{isFold ? '84rpx' : 'auto'}}">{{detailMovie.dra}}</view>
+            <view class="iconfont icon-jiantouarrow483 {{isFold ? '' : 'unfold'}}" bindtap="toggleFold"></view>
+        </view>
+        <view class="section">
+            <view class="section-title">演职人员</view>
+            <scroll-view scroll-x class="scroll-view_H">暂无数据...</scroll-view>
+        </view>
+        <view class="section">
+            <view class="section-title">媒体库</view>
+            <scroll-view scroll-x class="scroll-view_H">
+                <view wx:if="{{!detailMovie.videoImg && !detailMovie.photos.length}}">暂无数据...</view>
+                <view class="videoImg-box" wx:if="{{detailMovie.videoImg}}" bindtap="toVideo">
+                    <image src="{{detailMovie.videoImg}}" class="videoImg" mode="aspectFill" />
+                    <view class="iconfont icon-zanting"></view>
+                </view>
+                <image src="{{item}}" 
+                       wx:for="{{detailMovie.photos}}" 
+                       wx:key="{{item}}" 
+                       class="photo" 
+                       mode="aspectFill" 
+                       bindtap="previewImage" 
+                       data-index="{{index}}" />
+            </scroll-view>
+        </view>
+        <view class="section" wx:if="{{comments.total && comments.hcmts.length}}">
+            <view class="section-title comment">评论</view>
+            <view>
+                <template is="commentSection" 
+                          wx:for="{{comments.hcmts}}" 
+                          wx:key="{{comment.id}}" 
+                          wx:for-item="comment" 
+                          data="{{comment}}">
+                </template>
+            </view>
+            <navigator url="../comment-page/comment-page?movieId={{detailMovie.id}}&movieName={{detailMovie.nm}}" 
+                       wx:if="{{comments.total}}"
+                       class="total">
+                查看全部{{comments.total}}条短评           
+            </navigator>
+        </view>
+    </view>
+    <navigator url="/pages/subPages/select-cinema/select-cinema?movieId={{detailMovie.id}}&movieName={{detailMovie.nm}}&showTime={{detailMovie.rt}}" 
+               wx:if="{{detailMovie.onSale}}" 
+               class="purchase"
+               hover-class="none">
+        优惠购票
+    </navigator>
+</view>

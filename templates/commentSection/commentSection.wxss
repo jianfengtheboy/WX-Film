@@ -15,7 +15,7 @@
     margin-left: 40rpx;
     padding-right: 30rpx;
     padding-bottom: 30rpx;
-    border-bottom: 1px solid #ee66ee;
+    border-bottom: 1px solid #e6e6e6;
 }
 
 .commentSection:last-child .left {
@@ -44,7 +44,7 @@
 }
 
 .content {
-    font-size: 30rpx;
+    font-size: 28rpx;
     margin: 20rpx 0;
 }
 
@@ -61,4 +61,10 @@
 
 .approve {
     font-size: 24rpx;
+}
+
+.icon-zan1 {
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 1px;
 }
