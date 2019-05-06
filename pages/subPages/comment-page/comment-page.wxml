@@ -1,2 +1,30 @@
 <!--pages/subPages/comment-page/comment-page.wxml-->
-<text>pages/subPages/comment-page/comment-page.wxml</text>
+<import src="../../../templates/commentSection/commentSection.wxml" />
+
+<view>
+    <view class="hot" wx:if="{{hcmts.length}}">
+        <view class="comment-title">热门评论</view>
+        <view>
+            <template is="commentSection" 
+                      wx:for="{{hcmts}}" 
+                      wx:for-item="comment" 
+                      wx:key="{{comment.id}}"
+                      data="{{comment}}">
+            </template>
+        </view>
+    </view>
+    <view class="hot" wx:if="{{cmts.length}}">
+        <view class="comment-title">最新评论</view>
+        <view>
+            <template is="commentSection"
+                      wx:for="{{cmts}}"
+                      wx:for-item="comment"
+                      wx:key="comment.id"
+                      data="{{comment}}">
+            </template>
+        </view>
+    </view>
+    <view class="loadingMore" wx:if="{{!loadComplete && cmts.length && hcmts.length}}">
+        <view class="loading-text">加载更多...</view>
+    </view>
+</view>

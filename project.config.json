@@ -39,16 +39,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "video",
-					"pathName": "pages/subPages/video-page/video-page",
-					"query": "paramsStr={\"video\":{\"videourl\":\"http://maoyan.meituan.net/movie/videos/854x4808be5da5cbbae487891c738acdf8f88a7.mp4\",\"videoImg\":\"http://p1.meituan.net/movie/b06a7375016f7021d38c7ccbce0a78fa2131276.png@640w_360h_1e_1c\",\"videoName\":\"惊奇队长力推4DX版超沉浸领略终局之战\"},\"movieName\":\"复仇者联盟4：终局之战\",\"id\":248172,\"version\":[\"3D\",\"IMAX\"],\"release\":\"2019-04-24大陆上映\",\"rt\":\"2019-04-24\",\"wish\":1849927,\"globalReleased\":true,\"sc\":9.1,\"showst\":3}",
-					"scene": null
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
