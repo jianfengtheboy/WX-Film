@@ -37,7 +37,7 @@
             </view>
         </view>
         <view class="list-box" wx:if="{{videoList.length}}">
-            <view class="play-title">播放列表 （{{videoList.length}}）</view>
+            <view class="play-title">播放列表({{videoList.length}})</view>
             <view wx:for="{{videoList}}" wx:key="{{item}}" class="video-item" bindtap="selectItem" data-index="{{index}}">
                 <view class="img-box">
                     <image src="{{item.videoImg}}" mode="aspectFill" />
