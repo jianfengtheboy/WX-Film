@@ -147,7 +147,7 @@ Component({
         selectRegionItem(e) {
             const index = e.currentTarget.dataset.index
             const cityCinemaInfo = this.properties.cityCinemaInfo
-            let obj = { ...this.data.selectRegion } 
+            let obj = { ...this.data.selectRegion }
             if (index === 0) {
                 obj.item = 0
                 obj.sideList = cityCinemaInfo.district.subItems
@@ -155,7 +155,7 @@ Component({
                 obj.list = findItem.subItems ? findItem.subItems : []
             } else {
                 obj.item = 1
-                obj.sideList = cityCinemaInfo.subWay.subItems
+                obj.sideList = cityCinemaInfo.subway.subItems
                 const findItem = obj.sideList.find(item => item.id === obj.selectLineId)
                 obj.list = findItem.subItems ? findItem.subItems : []
             }

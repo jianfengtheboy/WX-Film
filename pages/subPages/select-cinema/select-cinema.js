@@ -57,7 +57,7 @@ Page({
     return new Promise((resolve, reject) => {
       wx.request({
         url: `https://m.maoyan.com/ajax/movie?forceUpdate=${Date.now()}`,
-        methods: "POST",
+        method: 'POST',
         data: params,
         success(res) {
           resolve(res.data.cinemas)
@@ -71,6 +71,80 @@ Page({
   },
   //获取过滤菜单数据
   getFilter() {
-
+    let _this = this
+    let { params } = this.data
+    wx.request({
+      url: `https://m.maoyan.com/ajax/filterCinemas?movieId=${params.movieId}&day=${params.day}`,
+      success(res) {
+        _this.setData({
+          cityCinemaInfo: res.data
+        })
+      }
+    })
+  },
+  //当选择的时间变化时触发
+  changeTime(e) {
+    let day = e.detail.day
+    this.setData({
+      params: { ...this.data.params, day },
+      cinemas: [],
+      isShow: false,
+      noSchedule: false
+    }, () => {
+      wx.showLoading({
+        title: '正在加载...'
+      })
+      this.getCinemas(this.data.params).then((list) => {
+        wx.hideLoading()
+        if (!list.length) {
+          this.setData({
+            noSchedule: true
+          })
+        }
+      })
+      this.getFilter()
+    })
+  },
+  //当过滤条件变化时调用的函数
+  changeCondition(e) {
+    let obj = e.detail
+    wx.showLoading({
+      title: '正在加载...'
+    })
+    this.setData({
+      params: {
+        ...this.data.params,
+        ...obj
+      },
+      cinemas: [],
+      nothing: false
+    }, () => {
+      this.getCinemas(this.data.params).then((list) => {
+        if (!list.length) {
+          this.setData({
+            nothing: true
+          })
+        }
+        wx.hideLoading()
+      })
+    })
+  },
+  //导航下拉框状态变化时的处理，在下拉框展开时禁止滚动穿透
+  toggleShow(e) {
+    let item = e.detail.item
+    this.setData({
+      isShow: item !== -1
+    })
+  },
+  //上拉触底加载更多
+  onReachBottom() {
+    if (this.data.loadComplete) {
+      return
+    }
+    const params = {
+      ...this.data.params,
+      offset: this.data.cinemas.length
+    }
+    this.getCinemas(params)
   }
 })
