@@ -37,22 +37,22 @@ Component({
         itemName2: '品牌',
         itemName3: '特色',
         //选择的品牌ID
-        selectBrandId: -1, 
+        selectBrandId: -1,
         //选择的服务ID
-        selectServiceId: -1, 
+        selectServiceId: -1,
         //选择的特殊厅ID
-        selectHallTypeId: -1, 
+        selectHallTypeId: -1,
         selectRegion: {
             item: 0,
             //侧边导航的list
             sideList: [],
-            //详情list 
-            list: [], 
+            //详情list
+            list: [],
             //选择的大区ID
-            selectDistrictId: -1, 
+            selectDistrictId: -1,
             //选择的小区ID
             selectAreaId: -1,
-            //选择的地铁线ID 
+            //选择的地铁线ID
             selectLineId: -1,
             //选择的地铁站ID 
             selectStationId: -1 
@@ -175,10 +175,10 @@ Component({
             const side = e.currentTarget.dataset.side
             let obj = { 
                 ...this.data.selectRegion,
-                ist: side.subItems ? side.subItems : []
+                list: side.subItems ? side.subItems : []
             }
             if (item === 0) {
-                //点击'全部'时关闭下拉框
+                //点击“全部”时关闭下拉框
                 if (side.id === -1 && selectDistrictId !== -1) {
                     this.triggerEvent('change', {
                         districtId: -1,
@@ -189,7 +189,7 @@ Component({
                     this.setData({
                         itemNum: -1,
                         itemName1: '全城',
-                        selectRegion: {
+                        selectRegion: { 
                             ...this.data.selectRegion,
                             selectDistrictId: -1,
                             selectAreaId: -1,
@@ -211,7 +211,7 @@ Component({
                     this.setData({
                         itemNum: -1,
                         itemName1: '全城',
-                        selectRegion: {
+                        selectRegion: { 
                             ...this.data.selectRegion,
                             selectLineId: -1,
                             selectStationId: -1,
@@ -223,7 +223,7 @@ Component({
                 obj.selectLineId = side.id
             }
             this.setData({
-                selectRegion : obj
+                selectRegion: obj
             })
         },
         //'全城'详细list的点击事件
@@ -244,7 +244,7 @@ Component({
             this.setData({
                 selectRegion: obj,
                 itemNum: -1,
-                itemName1: item.name
+                itemName1: item.name,
             })
         },
         //简单实现类似vue的watch
@@ -264,7 +264,7 @@ Component({
                     }
                     val = newVal
                     // 赋值(set)时，调用对应函数
-                    func(newVal)
+                    func(newVal) 
                 },
                 get: function() {
                     return val
