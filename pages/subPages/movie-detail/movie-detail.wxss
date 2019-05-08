@@ -111,7 +111,7 @@
 }
 
 .tab-imax {
-    padding: 0 4rpx;
+    padding: 0 6rpx;
 }
 
 .movie-time {

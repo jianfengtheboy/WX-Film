@@ -11,10 +11,11 @@
 }
 
 .sell-price {
-    font-size: 24rpx;
+    font-size: 22rpx;
     color: #999;
     white-space: nowrap;
     margin-left: 20rpx;
+    letter-spacing: 1px;
 }
 
 .price {
