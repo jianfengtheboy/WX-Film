@@ -1,66 +1,37 @@
 // pages/subPages/buy-ticket/buy-ticket.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    order: null,
+    //是否是第一次支付
+    first: true
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad(params) {
+    let paramsObj = JSON.parse(params.paramsStr)
+    this.initData(paramsObj)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  initData(params) {
+    this.setData({
+      order: params
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //模拟支付
+  payment() {
+    //避免重复支付
+    if (this.data.first) {
+      let movieOrder = wx.getStorageSync('movieOrder') || []
+      movieOrder.unshift(this.data.order)
+      wx.setStorageSync('movieOrder', movieOrder)
+      wx.showToast({
+        title: '支付成功'
+      })
+      this.setData({
+        first: false
+      })
+    } else {
+      wx.showToast({
+        title: '已支付',
+        icon: 'none'
+      })
+    }
   }
 })
