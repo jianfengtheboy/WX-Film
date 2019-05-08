@@ -1,2 +1,8 @@
 <!--pages/subPages/snack-page/snack-page.wxml-->
-<text>pages/subPages/snack-page/snack-page.wxml</text>
+<import src="../../../templates/cinemaMap/cinemaMap.wxml" />
+
+<view class="container">
+    <view class="image-box">
+        
+    </view>
+</view>

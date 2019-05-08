@@ -39,8 +39,16 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "snack",
+					"pathName": "pages/subPages/snack-page/snack-page",
+					"query": "paramsStr={\"cinemaName\":\"CGV影城(光谷IMAX店)\",\"cinemaId\":\"5846\",\"dealId\":100147623,\"cinemaData\":{\"nm\":\"CGV影城(光谷IMAX店)\",\"addr\":\"洪山区光谷步行街4期德国风情街8号楼3楼\",\"shopId\":18531515,\"lat\":30.50135,\"lng\":114.40908,\"cinemaId\":5846,\"sell\":true}}",
+					"scene": null
+				}
+			]
 		}
 	}
 }
