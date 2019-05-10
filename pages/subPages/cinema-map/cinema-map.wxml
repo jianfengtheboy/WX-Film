@@ -1,2 +1,15 @@
 <!--pages/subPages/cinema-map/cinema-map.wxml-->
-<text>pages/subPages/cinema-map/cinema-map.wxml</text>
+<view class="container">
+    <map longitude="{{cinemaData.longitude}}" 
+         latitude="{{cinemaData.latitude}}" 
+         id="map" 
+         class="map"
+         show-location
+         markers="{{markers}}">
+    </map>
+    <cover-image src="/assets/images/pos.png" class="pos" bindtap="position"></cover-image>
+    <view class="cinema-box">
+        <view class="cinema-name">{{cinemaData.nm}}</view>
+        <view class="cinema-position">{{cinemaData.addr}}</view>
+    </view>
+</view>
