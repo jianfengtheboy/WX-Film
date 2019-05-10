@@ -129,7 +129,6 @@
 .vipPrice {
     height: 25rpx;
     line-height: 25rpx;
-    margin-top: 1px;
     border: 1px solid #ff9000;
     border-radius: 2px;
     font-size: 22rpx;

@@ -10,7 +10,7 @@
         <view class="price-box">
             <view>票价</view>
             <view class="server">含服务费3元/张
-                <text class="price-num">{{order.price}}<text class="yuan">元</text></text>
+                <text class="price-num"><text class="yuan">¥</text>{{order.price}}</text>
             </view>
         </view>
     </view>
@@ -30,8 +30,8 @@
         <view class="section-content">手机号仅用于生成订单，取票码不再以短信发送</view>
     </view>
     <view class="footer">
-        <view class="payment">还需支付：
-            <text class="price-num">{{order.price}}<text class="yuan">元</text></text>
+        <view class="payment">还需支付:
+            <text class="price-num"><text class="yuan">¥</text>{{order.price}}</text>
         </view>
         <view class="payment-btn" bindtap="payment">确认支付</view>
     </view>

@@ -52,7 +52,8 @@
     position: absolute;
     height: 42rpx;
     width: 160rpx;
-    margin: 0 auto;
+    left: 50%;
+    margin-left: -80rpx;
     font-size: 32rpx;
     line-height: 42rpx;
     color: #333;

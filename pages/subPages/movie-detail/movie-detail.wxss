@@ -63,7 +63,6 @@
     font-size: 36rpx;
     font-weight: 600;
     color: #fff;
-    margin-top: 6rpx;
 }
 
 .movie-ename {
@@ -121,7 +120,7 @@
 }
 
 .movie-body {
-    margin-bottom: 110rpx;
+    margin-bottom: 100rpx;
 }
 
 .section {
