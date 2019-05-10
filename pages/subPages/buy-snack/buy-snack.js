@@ -1,66 +1,66 @@
 // pages/subPages/buy-snack/buy-snack.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    order: null,
+    //是否是第一次支付
+    first: true
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad(opt) {
+    let paramsObj = JSON.parse(opt.paramsStr)
+    this.initPage(paramsObj)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  initPage(order) {
+    this.setData({
+      order
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //减少数量
+  minus() {
+    if (this.data.order.amount === 1) {
+      return
+    } else {
+      this.chanegAmount()
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //增加数量
+  plus() {
+    this.chanegAmount(1)
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  chanegAmount(flag) {
+    let order = { ...this.data.order }
+    let amount= order.amount
+    if (flag) {
+      amount ++
+    } else {
+      amount --
+    }
+    let total = (amount * order.price).toFixed(1)
+    this.setData({
+      order: {
+        ...order,
+        amount,
+        total
+      }
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //模拟支付
+  payment() {
+    //避免重复支付
+    if (this.data.first) {
+      let snackOrder = wx.getStorageSync('snackOrder') || []
+      snackOrder.unshift(this.data.order)
+      wx.setStorageSync('snackOrder', snackOrder)
+      wx.showToast({
+        title: '支付成功'
+      })
+      this.setData({
+        first: false
+      })
+    } else {
+      wx.showToast({
+        title: '已支付',
+        icon: 'none'
+      })
+    }
   }
 })
