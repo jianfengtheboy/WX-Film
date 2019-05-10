@@ -228,12 +228,12 @@
     color: #999;
 }
 
-.num {
+.rmb {
     font-size: 30rpx;
     color: #f03d37;
 }
 
-.rmb {
+.num {
     color: #f03d37;
 }
 

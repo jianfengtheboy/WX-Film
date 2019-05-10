@@ -22,8 +22,8 @@ Page({
       cinemaId: obj.cinemaId
     }
     wx.request({
-      url: 'https://m.maoyan.com/deal/goods/price?_v_=yes&token=_Rpc-H8U5JCblI4hGuJyrBtkd1cAAAAAdQYAADhpD2UCdaExkvgi4bFJcnWhlfI6rc7ilxZE_SENva6l8EU_L8_hQE-hXUB7l21d1w',
-      method: 'GET',
+      url: 'https://m.maoyan.com/deal/goods/price?_v_=yes&token=gde4_JGfbHs-M3rXVjNsvpH4FZIAAAAAZggAANery34ujvNsZJGUqUOw9titPeJIWbPn9lnhm56NEcH2Czjk9z6J-jlwnZbgMN9T-Q',
+      method: 'POST',
       data: data,
       success: (res) => {
         wx.hideLoading()

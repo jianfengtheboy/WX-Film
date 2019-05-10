@@ -68,7 +68,9 @@
 
 .movie-ename {
     margin-bottom: 12rpx;
+    margin-top: 8rpx;
     color: #fff;
+    opacity: 0.8;
 }
 
 .movie-score {
