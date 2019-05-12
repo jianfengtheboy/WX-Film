@@ -110,6 +110,10 @@
     border-bottom: 1px solid #f0f0f0;
 }
 
+.other-item:last-child {
+    border: none;
+}
+
 .other-item::after {
     position: absolute;
     right: 30rpx;
