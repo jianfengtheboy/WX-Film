@@ -1,66 +1,41 @@
 // pages/subPages/movie-order/movie-order.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    orderList: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    this.initPage()
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  initPage() {
+    let orderList = wx.getStorageSync('movieOrder') || []
+    this.setData({
+      orderList
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //删除订单
+  deleteOrder(e) {
+    let index = e.currentTarget.dataset.index
+    let orderList = this.data.orderList.slice()
+    orderList.splice(index, 1)
+    wx.showModal({
+      title: '提示',
+      content: '确认删除订单吗？',
+      success: (res) => {
+        if (res.confirm) {
+          this.setData({
+            orderList
+          })
+          wx.setStorageSync('movieOrder', orderList)
+        }
+      }
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //跳转到订单详情页面
+  goTo(e) {
+    let order = e.currentTarget.dataset.order
+    let paramsStr = JSON.stringify(order)
+    wx.navigateTo({
+      url: `../movie-order-detail/movie-order-detail?paramsStr=${paramsStr}`
+    })
   }
 })
