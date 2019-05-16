@@ -56,7 +56,7 @@ const getRandom = (lowerValue, upperValue,isFormat) => {
 }
 
 //节流函数
-const throttle = (func, interval=250)=> {
+const throttle = (func, interval=250) => {
   let timeout
   let startTime = new Date()
   return function (event) {

@@ -1,2 +1,14 @@
 <!--pages/subPages/city-select/city-select.wxml-->
-<text>pages/subPages/city-select/city-select.wxml</text>
+<import src="../../../templates/nothing/nothing.wxml" />
+
+<view class="container">
+    <view class="search-city">
+        <input placeholder="输入城市名或拼音查询" class="search-input" bindinput="search" placeholder-class="phcolor" />
+        <view class="iconfont icon-sousuo"></view>
+    </view>
+    <block wx:if="{{!!!searchValue}}">
+        <view class="citylist-content">
+            
+        </view>
+    </block>
+</view>
