@@ -24,7 +24,7 @@ Page({
     this.normalizeCityList(citys)
   },
   onReady() {
-    const query = wx.createSelectorQuery()
+    let query = wx.createSelectorQuery()
     query.select('.citylist-nav').boundingClientRect()
     query.select('.citylist-nav-item').boundingClientRect()
     query.selectAll('.section').fields({
@@ -58,8 +58,8 @@ Page({
     if (this.data.inNavbar || this.data.searchValue) {
       return //如果是侧边栏的wx.pageScrollTo触发的滚动则不执行下面的程序
     }
-    const sections = this.data.sections
-    const scrollTop = e.scrollTop
+    let sections = this.data.sections
+    let scrollTop = e.scrollTop
     this.handlePageScroll(sections, scrollTop)
   }),
   //页面滚动的处理程序
@@ -78,8 +78,8 @@ Page({
   //处理API返回的城市列表数据
   normalizeCityList(citys) {
     let map = {}
-    citys.forEach(item => {
-      const key = item.city_pre.toUpperCase()
+    citys.citys.forEach(item => {
+      let key = item.city_pre.toUpperCase()
       //如果没有该字母索引，就创建该字母索引
       if (!map[key]) {
         map[key] = {
@@ -96,11 +96,11 @@ Page({
     //按字母顺序排序
     list.sort((a, b) => a.title.charCodeAt(0) - b.title.charCodeAt(0))
     //创建热门城市
-    const hot = {
+    let hot = {
       title: '热门城市',
       index: '热门',
       style: 'inline',
-      items: citys.slice(0, 10)
+      items: citys.citys.slice(0, 10)
     }
     list.unshift(hot)
     //创建当前定位城市
@@ -112,7 +112,7 @@ Page({
     }
     //判断是否获得用户定位城市
     if (app.globalData.userLocation.status === 1){
-      let city = citys.find(item => item.city_name === app.globalData.userLocation.cityName) || { city_name: '定位失败，请点击重试' }
+      let city = citys.citys.find(item => item.city_name === app.globalData.userLocation.cityName) || { city_name: '定位失败，请点击重试' }
       current.items = [city]
     } else {
       current.items = [{
@@ -126,8 +126,8 @@ Page({
   },
   //点击城市的事件处理程序
   selectCity(e) {
-    const cityName = e.currentTarget.dataset.city.city_name
-    const _this = this
+    let cityName = e.currentTarget.dataset.city.city_name
+    let _this = this
     if (cityName ==='定位失败，请点击重试'){
       wx.showModal({
         title: '',
@@ -163,11 +163,11 @@ Page({
   },
   //侧边栏导航的点击事件处理
   navSelect(e) {
-    const {
+    let {
       citylist,
       sections
     } = this.data
-    const index = e.currentTarget.dataset.index
+    let index = e.currentTarget.dataset.index
     wx.showToast({
       icon: 'none',
       title: citylist[index].title
@@ -179,7 +179,7 @@ Page({
   },
   //在侧边栏上滑动的事件处理,使用函数节流优化
   handleTouchmove: throttle(function(e){
-    const {
+    let {
       navTop,
       navItemHeight,
       citylist,
@@ -201,10 +201,10 @@ Page({
   }),
   //input框输入是的查询事件
   search(e) {
-    const value = e.detail.value.trim().toUpperCase()
+    let value = e.detail.value.trim().toUpperCase()
     let result = []
     if (value) {
-      result = citys.filter(item => {
+      result = citys.citys.filter(item => {
         if (value.length === 1 && value >= 'A' && value <= 'Z') {
           return value === item.city_pre.toUpperCase()
         }
