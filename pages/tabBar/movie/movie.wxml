@@ -12,7 +12,7 @@
             <view class="hot-item {{switchItem === 0 ? 'active' : ''}}" bindtap="selectItem" data-item="{{0}}">正在热映</view>
             <view class="hot-item {{switchItem === 1 ? 'active' : ''}}" bindtap="selectItem" data-item="{{1}}">即将上映</view>
         </view>
-        <navigator url="../../subPages/search-page/search-page??stype=-1" class="search-entry" hover-class="none">
+        <navigator url="../../subPages/search-page/search-page?stype=-1" class="search-entry" hover-class="none">
             <text class="iconfont icon-sousuo"></text>
         </navigator>
     </view>

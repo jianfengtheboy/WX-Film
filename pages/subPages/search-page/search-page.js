@@ -1,66 +1,53 @@
 // pages/subPages/search-page/search-page.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    value: '',
+    stype: '',
+    placeholder: '',
+    movies: {},
+    cinemas: {}
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad(query) {
+   this.initPage(query)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  initPage(query){
+    //搜索类型，-1代表搜索影院或电影，2代表搜索影院
+    let stype = query.stype
+    let placeholder = ''
+    if (stype === '-1') {
+      placeholder = '搜电影、搜影院'
+    } else {
+      placeholder = '搜影院'
+    }
+    this.setData({
+      stype,
+      placeholder
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  search(e) {
+    let value = e.detail.value
+    let _this = this
+    this.setData({
+      value
+    })
+    wx.request({
+      url: `https://m.maoyan.com/ajax/search?kw=${value}&cityId=57&stype=${_this.data.stype}`,
+      success(res) {
+        let movies = res.data.movies ? res.data.movies.list : []
+        movies = movies.map(item=>{
+          item.img = item.img.replace('w.h','128.180')
+          return item
+        })
+        _this.setData({
+          movies: movies,
+          cinemas: res.data.cinemas ? res.data.cinemas.list : []
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  goBack() {
+    wx.navigateBack({
+      delta: 1
+    })
   }
 })
