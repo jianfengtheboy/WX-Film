@@ -100,6 +100,7 @@
     white-space: nowrap;
     width: calc(100vw * 0.4);
     height: 100%;
+    border-right: 1px solid #e5e5e5;
 }
 
 .side-item {

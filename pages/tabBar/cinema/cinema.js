@@ -1,66 +1,139 @@
 // pages/tabBar/cinema/cinema.js
+const util = require("../../../utils/util.js")
+const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    city: '正在定位...',
+    //url参数
+    params: {
+      day: util.getToday(),
+      offset: 0,
+      limit: 20,
+      districtId: -1,
+      lineId: -1,
+      hallType: -1,
+      brandId: -1,
+      serviceId: -1,
+      areaId: -1,
+      stationId: -1,
+      item: '',
+      updateShowDay: false
+    },
+    //结果是否为空
+    nothing: false,
+    //影院列表
+    cinemas: [],
+    //城市影院信息
+    cityCinemaInfo: {},
+    //数据是否加载完
+    loadComplete: false,
+    //导航下拉框是否展开
+    isShow: false,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad() {
+    if (app.globalData.userLocation) {
+      this.setData({
+        city: app.globalData.selectCity ? app.globalData.selectCity.cityName : '定位失败'
+      })
+    } else {
+      app.userLocationReadyCallback = () => {
+        this.setData({
+          city: app.globalData.selectCity ? app.globalData.selectCity.cityName : '定位失败'
+        })
+      }
+    }
+    this.initPage()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onShow() {
+    if (app.globalData.selectCity) {
+      this.setData({
+        city: app.globalData.selectCity.cityName
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //初始化页面
+  initPage() {
+    wx.showLoading({
+      title: '正在加载...'
+    })
+    let _this = this
+    this.getCinemas(this.data.params).then(() => {
+      wx.hideLoading()
+    })
+    wx.request({
+      url: 'https://m.maoyan.com/ajax/filterCinemas',
+      success(res) {
+        _this.setData({
+          cityCinemaInfo: res.data
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //获取影院列表
+  getCinemas(params) {
+    let _this = this
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: 'https://m.maoyan.com/ajax/cinemaList',
+        data: params,
+        success(res) {
+          resolve(res.data.cinemas)
+          _this.setData({
+            cinemas: _this.data.cinemas.concat(res.data.cinemas),
+            loadComplete: !res.data.paging.hasMore
+          })
+        }
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  //当过滤条件变化时调用的函数
+  changeCondition(e) {
+    let obj = e.detail
+    wx.showLoading({
+      title: '正在加载...'
+    })
+    this.setData({
+      params: {
+        ...this.data.params,
+        ...obj
+      },
+      cinemas: [],
+      nothing: false
+    }, () => {
+      this.getCinemas(this.data.params).then((list) => {
+        if (!list.length) {
+          this.setData({
+            nothing: true
+          })
+        }
+        wx.hideLoading()
+      })
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  //导航下拉框状态变化时的处理
+  toggleShow(e) {
+    let item = e.detail.item
+    this.setData({
+      isShow: item !== -1
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  //上拉触底加载更多
+  onReachBottom() {
+    if (this.data.loadComplete) {
+      return
+    }
+    let params = { 
+      ...this.data.params,
+      offset: this.data.cinemas.length
+    }
+    this.getCinemas(params)
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //转发
+  onShareAppMessage(res) {
+    return {
+      title: '最近上映的这些电影你都看了吗？',
+      path: 'pages/tabBar/movie/movie'
+    }
   }
 })
