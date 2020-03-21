@@ -1,8 +1,15 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-13 22:55:37
+ * @LastEditTime: 2020-03-21 19:59:07
+ -->
 <!--pages/subPages/movie-order/movie-order.wxml-->
 <import src="../../../templates/nothing/nothing.wxml" />
 
 <view class="container order-list-page">
-    <view wx:for="{{orderList}}" wx:key="{{item}}" class="order-item">
+    <view wx:for="{{orderList}}" wx:key="item" class="order-item">
         <navigator url="../cinema-detail/cinema-detail?cinemaId={{item.cinemaId}}" hover-class="none" class="order-title line-ellipsis">
             <view>{{item.cinemaName}}</view>
             <view class="triangle"></view>

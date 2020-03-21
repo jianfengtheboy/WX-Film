@@ -1,3 +1,10 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-06 20:34:38
+ * @LastEditTime: 2020-03-21 19:58:02
+ -->
 <!--pages/subPages/comment-page/comment-page.wxml-->
 <import src="../../../templates/commentSection/commentSection.wxml" />
 
@@ -8,7 +15,7 @@
             <template is="commentSection" 
                       wx:for="{{hcmts}}" 
                       wx:for-item="comment" 
-                      wx:key="{{comment.id}}"
+                      wx:key="comment"
                       data="{{comment}}">
             </template>
         </view>
@@ -19,7 +26,7 @@
             <template is="commentSection"
                       wx:for="{{cmts}}"
                       wx:for-item="comment"
-                      wx:key="comment.id"
+                      wx:key="comment"
                       data="{{comment}}">
             </template>
         </view>

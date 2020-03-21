@@ -1,3 +1,10 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-04-29 20:43:56
+ * @LastEditTime: 2020-03-21 19:55:10
+ -->
 <template name="commentSection">
     <view class="commentSection">
         <view><image src="{{comment.avatarurl}}" class="avatar"></image></view>
@@ -9,7 +16,7 @@
             <view class="stars">
                 <image class="movie-star"
                        wx:for="{{comment.stars}}"
-                       wx:key="{{index}}"
+                       wx:key="index"
                        src="/assets/images/{{item}}.png" 
                        node="aspectFill">
                 </image>

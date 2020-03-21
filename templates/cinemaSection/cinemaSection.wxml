@@ -1,3 +1,10 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-10 23:27:00
+ * @LastEditTime: 2020-03-21 19:54:53
+ -->
 <template name="cinemaSection">
     <navigator class="cinema-section"
                url="/pages/subPages/cinema-detail/cinema-detail?cinemaId={{cinema.id}}&movieId={{movieId}}&day={{day}}" 
@@ -14,7 +21,7 @@
         <view class="feature-tags">
             <text wx:if="{{cinema.endorse || cinema.tag.endorse}}">退</text>
             <text wx:if="{{cinema.allowRefund || cinema.tag.allowRefund}}">改签</text>
-            <text wx:for="{{cinema.hallType || cinema.tag.hallType}}" wx:key="{{item}}">{{item}}</text>
+            <text wx:for="{{cinema.hallType || cinema.tag.hallType}}" wx:key="item">{{item}}</text>
             <text class="featrue" wx:if="{{cinema.snack || cinema.tag.snack}}">小吃</text>
             <text class="featrue" wx:if="{{cinema.vipDesc || cinema.tag.vipTag}}">{{cinema.vipDesc ||cinema.tag.vipTag}}</text>
         </view>

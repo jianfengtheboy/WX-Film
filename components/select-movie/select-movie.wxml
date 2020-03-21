@@ -1,3 +1,10 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-04-29 20:43:56
+ * @LastEditTime: 2020-03-21 19:53:39
+ -->
 <view class="swiper-container">
     <view class="post-bg" style="background-image:url({{movie.img}})"></view>
     <view class="post-bg-mask"></view>
@@ -6,7 +13,7 @@
                  class="swiper-wrapper scroll-view_H">
         <view class="movie-item" 
               wx:for="{{movies}}" 
-              wx:key="item.id" 
+              wx:key="item" 
               data-movie="{{item}}"
               bindtap="selectMovie"
               id="item{{index}}">

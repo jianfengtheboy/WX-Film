@@ -1,3 +1,10 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-05 19:20:09
+ * @LastEditTime: 2020-03-21 19:58:44
+ -->
 <!--pages/subPages/movie-detail/movie-detail.wxml-->
 <import src="../../../templates/commentSection/commentSection.wxml" />
 
@@ -13,7 +20,7 @@
                 <view wx:if="{{detailMovie.globalReleased}}">
                     <view wx:if="{{detailMovie.sc}}">
                         <view class="movie-score line-ellipsis">
-                            <image src="/assets/images/{{item}}.png" class="movie-star" wx:for="{{detailMovie.stars}}" wx:key="{{index}}" />
+                            <image src="/assets/images/{{item}}.png" class="movie-star" wx:for="{{detailMovie.stars}}" wx:key="index" />
                             {{detailMovie.sc}}
                         </view>
                         <view class="score-num line-ellipsis">({{detailMovie.snum}}万人评分)</view>
@@ -53,7 +60,7 @@
                 </view>
                 <image src="{{item}}" 
                        wx:for="{{detailMovie.photos}}" 
-                       wx:key="{{item}}" 
+                       wx:key="item" 
                        class="photo" 
                        mode="aspectFill" 
                        bindtap="previewImage" 
@@ -65,7 +72,7 @@
             <view>
                 <template is="commentSection" 
                           wx:for="{{comments.hcmts}}" 
-                          wx:key="{{comment.id}}" 
+                          wx:key="comment" 
                           wx:for-item="comment" 
                           data="{{comment}}">
                 </template>

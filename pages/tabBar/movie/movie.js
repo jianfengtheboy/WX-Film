@@ -69,7 +69,7 @@ Page({
       title: "正在加载..."
     })
     wx.request({
-      url: 'https://m.maoyan.com/ajax/movieOnInfoList?token=',
+      url: 'http://maoyan.bluej.cn/ajax/movieOnInfoList?token=',
       success(res) {
         const movieList0 = _this.formatImgUrl(res.data.movieList)
         wx.hideLoading()

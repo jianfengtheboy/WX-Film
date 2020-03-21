@@ -1,8 +1,15 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-06 20:34:38
+ * @LastEditTime: 2020-03-21 20:01:28
+ -->
 <!--pages/subPages/video-page/video-page.wxml-->
 <view wc:if="{{info && current !== -1}}">
     <view class="video-box">
         <video src="{{videoList[current].videourl}}" 
-               wx:key="{{current}}" 
+               wx:key="current" 
                id="my-video" 
                autoplay 
                bindended="endHandle" 
@@ -38,7 +45,7 @@
         </view>
         <view class="list-box" wx:if="{{videoList.length}}">
             <view class="play-title">播放列表({{videoList.length}})</view>
-            <view wx:for="{{videoList}}" wx:key="{{item}}" class="video-item" bindtap="selectItem" data-index="{{index}}">
+            <view wx:for="{{videoList}}" wx:key="item" class="video-item" bindtap="selectItem" data-index="{{index}}">
                 <view class="img-box">
                     <image src="{{item.videoImg}}" mode="aspectFill" />
                     <view class="txt" wx:if="{{current === index}}">播放中</view>

@@ -1,3 +1,10 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-10 23:27:00
+ * @LastEditTime: 2020-03-21 22:35:43
+ -->
 <!--pages/subPages/cinema-detail/cinema-detail.wxml-->
 <import src="../../../templates/cinemaMap/cinemaMap.wxml" />
 
@@ -26,7 +33,7 @@
     </view>
     <view>
         <view wx:if="{{timeList.length}}">
-            <view class="time item" wx:for="{{timeList}}" wx:key="{{item.tm}}" bindtap="buyTicket" data-info="{{item}}">
+            <view class="time item" wx:for="{{timeList}}" wx:key="item.tm" bindtap="buyTicket" data-info="{{item}}">
                 <view class="time-block box">
                     <view class="begin">{{item.tm}}</view>
                     <view class="end">{{item.endTime}} 散场</view>
@@ -60,8 +67,8 @@
     </view>
     <view class="tuan-list" wx:if="{{divideDealList.length}}">
         <view class="title">影院超值套餐</view>
-        <view class="tuan-item" wx:for="{{divideDealList}}" wx:key="{{item.title}}">
-            <view wx:for="{{item.dealList}}" wx:for-item="i" wx:key="{{i}}" class="snack-item" bindtap="goSnackPage" data-info="{{i}}">
+        <view class="tuan-item" wx:for="{{divideDealList}}" wx:key="item">
+            <view wx:for="{{item.dealList}}" wx:for-item="i" wx:key="i" class="snack-item" bindtap="goSnackPage" data-info="{{i}}">
                 <view>
                     <image src="{{i.imageUrl}}" />
                 </view>

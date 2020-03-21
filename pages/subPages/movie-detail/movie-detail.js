@@ -101,7 +101,7 @@ Page({
     //评分星星,满分10分，一颗满星代表2分
     obj.stars = this.formatStar(obj.sc / 2)
     //处理媒体库的图片
-    obj.photos = obj.photos.map(item => item.replace('w.h/', '') +'@180w_140h_1e_1c.webp')
+    obj.photos = obj.photos.map(item => item.replace('w.h/', ''))
     return obj
   },
   //折叠与展开剧情简介

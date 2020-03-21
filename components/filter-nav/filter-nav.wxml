@@ -35,7 +35,7 @@
             <view class="region-list">
                 <scroll-view scroll-y class="region-sidenav">
                     <view wx:for="{{selectRegion.sideList}}"
-                          wx:key="{{item.id}}" 
+                          wx:key="item" 
                           class="line-ellipsis side-item {{selectRegion.item === 0 ? (item.id === selectRegion.selectDistrictId ? 'active' : '') : (item.id === selectRegion.selectLineId ? 'active' : '')}}" 
                           bindtap="regionSideClick"
                           data-side="{{item}}">
@@ -44,7 +44,7 @@
                 </scroll-view>
                 <scroll-view scroll-y class="region-list-item">
                     <view wx:for="{{selectRegion.list}}" 
-                          wx:key="{{item.id}}" 
+                          wx:key="item" 
                           class="item {{selectRegion.item === 0 ? (item.id === selectRegion.selectAreaId ? 'red' : '') : (item.id === selectRegion.selectStationId ? 'red' : '')}}" 
                           bindtap="regionListClick" 
                           data-item="{{item}}">
@@ -63,7 +63,7 @@
               style="display: {{itemNum === 2 ? 'block' : 'none'}}">
             <scroll-view scroll-y class="brand-scroll-view">
                 <view wx:for="{{cityCinemaInfo.brand.subItems}}"
-                      wx:key="{{item.id}}" 
+                      wx:key="item" 
                       class="brand-item {{selectBrandId === item.id ? 'red' : ''}}" 
                       bindtap="selectBrand" 
                       data-brand="{{item}}">
@@ -83,7 +83,7 @@
                 <view class="item-title">特色功能</view>
                 <view class="item-list">
                     <view wx:for="{{cityCinemaInfo.service.subItems}}" 
-                          wx:key="{{item.id}}" 
+                          wx:key="item" 
                           class="btn line-ellipsis {{selectServiceId === item.id ? 'select' : ''}}" 
                           bindtap="specialSelectItem" 
                           data-type-id="{{item.id}}" 
@@ -93,7 +93,7 @@
                 <view class="item-title">特殊厅</view>
                 <view class="item-list">
                     <view wx:for="{{cityCinemaInfo.hallType.subItems}}" 
-                          wx:key="{{item.id}}" 
+                          wx:key="item" 
                           class="btn line-ellipsis {{selectHallTypeId === item.id ? 'select' : ''}}" 
                           bindtap="specialSelectItem" 
                           data-type-id="{{item.id}}" 

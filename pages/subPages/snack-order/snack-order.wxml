@@ -1,8 +1,15 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-19 21:32:40
+ * @LastEditTime: 2020-03-21 20:00:24
+ -->
 <!--pages/subPages/snack-order/snack-order.wxml-->
 <import src="../../../templates/nothing/nothing.wxml" />
 
 <view class="container order-list-page">
-    <view class="order-item" wx:for="{{orderList}}" wx:key="{{item}}">
+    <view class="order-item" wx:for="{{orderList}}" wx:key="item">
         <navigator class="order-title line-ellipsis" 
                    url="../cinema-detail/cinema-detail?cinemaId={{item.cinemaId}}" 
                    hover-class="none">

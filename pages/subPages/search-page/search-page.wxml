@@ -1,3 +1,10 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-19 21:32:40
+ * @LastEditTime: 2020-03-21 19:59:39
+ -->
 <!--pages/subPages/search-page/search-page.wxml-->
 <import src="../../../templates/nothing/nothing.wxml" />
 <import src="../../../templates/cinemaSection/cinemaSection.wxml" />
@@ -17,7 +24,7 @@
             <navigator url="/pages/subPages/movie-detail/movie-detail?movieId={{movie.id}}"
                        wx:for="{{movies}}"
                        wx:for-item="movie"
-                       wx:key="{{movie.id}}"
+                       wx:key="movie"
                        class="movie-section">
                 <image src="{{movie.img}}" class="movie-img" />
                 <view class="movie-info">
@@ -39,7 +46,7 @@
             <template is="cinemaSection" 
                       wx:for="{{cinemas}}" 
                       wx:for-item="cinema" 
-                      wx:key="{{cinema.id}}"
+                      wx:key="cinema"
                       data="{{cinema}}" />
         </view>
     </view>

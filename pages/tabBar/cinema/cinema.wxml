@@ -1,3 +1,10 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-20 23:55:33
+ * @LastEditTime: 2020-03-21 20:01:53
+ -->
 <!--pages/tabBar/cinema/cinema.wxml-->
 <import src="../../../templates/nothing/nothing.wxml" />
 <import src="../../../templates/loadingMore/loadingMore.wxml" />
@@ -23,7 +30,7 @@
         <template is="cinemaSection"
                   wx:for="{{cinemas}}"
                   wx:for-item="cinema"
-                  wx:key="{{cinema.id}}"
+                  wx:key="cinema"
                   data="{{cinema}}">
         </template>
     </view>

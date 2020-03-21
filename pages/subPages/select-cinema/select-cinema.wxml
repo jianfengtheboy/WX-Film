@@ -1,3 +1,10 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-05-10 23:27:00
+ * @LastEditTime: 2020-03-21 20:00:02
+ -->
 <!--pages/subPages/select-cinema/select-cinema.wxml-->
 <import src="../../../templates/cinemaSection/cinemaSection.wxml" />
 <import src="../../../templates/loadingMore/loadingMore.wxml" />
@@ -23,7 +30,7 @@
             <template is="cinemaSection"
                       wx:for="{{cinemas}}"
                       wx:for-item="cinema"
-                      wx:key="{{cinema.id}}"
+                      wx:key="cinema"
                       data="{{cinema,movieId:params.movieId,day:params.day}}">
             </template>
         </view>

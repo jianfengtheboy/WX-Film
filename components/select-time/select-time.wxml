@@ -1,8 +1,15 @@
+<!--
+ * @Author: SunJianFeng
+ * @LastEditors: SunJianFeng
+ * @Email: jianfengtheboy@163.com
+ * @Date: 2019-04-29 20:43:56
+ * @LastEditTime: 2020-03-21 19:54:01
+ -->
 <view>
     <scroll-view scroll-x class="timeline scroll-view_H">
         <view class="day {{item.day === selectDay ? 'active' : ''}}"
               wx:for="{{days}}"
-              wx:key="{{item}}"
+              wx:key="item"
               bindtap="selectDay"
               data-day="{{item.day}}">
             {{item.title}}
